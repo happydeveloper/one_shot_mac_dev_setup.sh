@@ -183,24 +183,34 @@ echo "설정이 완료되었습니다! 이제 터미널에서 'code .' 명령어
 echo "변경 사항을 사용하려면 터미널을 재시작하거나 'source $SHELL_PROFILE'을 실행하세요. / Please restart your terminal or run 'source $SHELL_PROFILE' to apply changes."
 
 # D2Coding 폰트 설치 및 설정 / Install and configure D2Coding font
+echo "D2Coding 폰트를 설치하시겠습니까? (y/n) / Do you want to install the D2Coding font? (y/n)"
+read INSTALL_FONT
 
-# D2Coding 폰트 저장소를 클론합니다. / Clone the D2Coding font repository
-git clone https://github.com/naver/d2codingfont.git
+if [ "$INSTALL_FONT" = "y" ]; then
+  # D2Coding 폰트 저장소를 클론합니다. / Clone the D2Coding font repository
+  git clone https://github.com/naver/d2codingfont.git
 
-# 디렉토리로 이동합니다. / Navigate to the directory
-cd d2codingfont
+  # 디렉토리로 이동합니다. / Navigate to the directory
+  cd d2codingfont
 
-# 최신 버전의 폰트를 압축 해제합니다. / Extract the latest version of the font
-unzip D2Coding-Ver1.3.2-20180524.zip -d D2CodingAll
+  # 최신 버전의 폰트를 압축 해제합니다. / Extract the latest version of the font
+  unzip D2Coding-Ver1.3.2-20180524.zip -d D2CodingAll
 
-# 폰트를 시스템 폰트 디렉토리로 이동합니다. / Move the font to the system fonts directory
-sudo mv D2CodingAll/D2CodingAll/D2Coding-Ver1.3.2-20180524-all.ttc /Library/Fonts/D2Coding-Ver1.3.2-20180524-all.ttc
+  # 폰트를 시스템 폰트 디렉토리로 이동합니다. / Move the font to the system fonts directory
+  sudo mv D2CodingAll/D2CodingAll/D2Coding-Ver1.3.2-20180524-all.ttc /Library/Fonts/D2Coding-Ver1.3.2-20180524-all.ttc
 
-# 정리 작업 / Clean up
-cd ..
-rm -rf d2codingfont
+  # 정리 작업 / Clean up
+  cd ..
+  rm -rf d2codingfont
 
-echo "D2Coding 폰트가 설치되고 iTerm2에 설정되었습니다. / D2Coding font installed and set in iTerm2 successfully."
+  echo "D2Coding 폰트가 설치되고 iTerm2에 설정되었습니다. / D2Coding font installed and set in iTerm2 successfully."
+else
+  echo "D2Coding 폰트 설치가 건너뛰어졌습니다. / D2Coding font installation skipped."
+fi
 
 # 관리자 권한 갱신 종료 / Stop refreshing administrator privileges
 sudo -k
+
+# setup_list_verify.sh 실행 / Execute setup_list_verify.sh
+echo "설치된 프로그램 정보를 확인합니다. / Verifying installed program information..."
+/Users/ttmik_engneering/Desktop/@area/one_shot/setup_list_verify.sh
