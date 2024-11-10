@@ -11,24 +11,9 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 echo "Zsh를 기본 쉘로 설정합니다. / Setting Zsh as the default shell..."
 chsh -s /bin/zsh
 
-# Xcode Command Line Tools 설치 / Install Xcode Command Line Tools
-echo "Xcode Command Line Tools를 설치합니다. / Installing Xcode Command Line Tools..."
-if xcode-select -p &>/dev/null; then
-  echo "Xcode Command Line Tools가 이미 설치되어 있습니다. / Xcode Command Line Tools are already installed"
-else
-  xcode-select --install
-fi
 
-
-# Xcode 최신 버전 설치 / Install the latest version of Xcode
-echo "Xcode 최신 버전을 설치합니다. / Installing the latest version of Xcode..."
-if ! xcodebuild -version &>/dev/null; then
-  echo "Xcode를 설치합니다. / Installing Xcode..."
-  mas install 497799835
-else
-  echo "Xcode가 이미 설치되어 있습니다. / Xcode is already installed"
-  echo "현재 Xcode 버전: $(xcodebuild -version | head -n 1) / Current Xcode version: $(xcodebuild -version | head -n 1)"
-fi
+# Xcode 설치 스크립트 실행 / Execute Xcode installation script
+./install_xcode.sh
 
 # Homebrew 설치 / Install Homebrew
 if ! command -v brew &>/dev/null; then
@@ -154,6 +139,11 @@ else
   brew install --cask slack
 fi
 
+# Message 설치 / Install Message
+mas install 1480068668
+echo "Message 설치 설치합니다. / Messagen..."
+
+
 # Google Chrome 설치 / Install Google Chrome
 echo "Google Chrome을 설치합니다. / Installing Google Chrome..."
 if brew list --cask google-chrome &>/dev/null; then
@@ -176,7 +166,7 @@ echo "SDKMAN을 설치합니다. / Installing SDKMAN..."
 curl -s "https://get.sdkman.io" | bash
 
 # SDKMAN 초기화 스크립트 추가 / Add SDKMAN initialization script
-echo 'source "/Users/ttmik_engneering/.sdkman/bin/sdkman-init.sh"' >> $SHELL_PROFILE
+echo 'source "$HOME/.sdkman/bin/sdkman-init.sh"' >> $SHELL_PROFILE
 
 # 마무리 메시지 / Completion message
 echo "설정이 완료되었습니다! 이제 터미널에서 'code .' 명령어로 Visual Studio Code를 실행할 수 있습니다. / Setup complete! You can now use 'code .' to open Visual Studio Code from the terminal."
@@ -213,4 +203,4 @@ sudo -k
 
 # setup_list_verify.sh 실행 / Execute setup_list_verify.sh
 echo "설치된 프로그램 정보를 확인합니다. / Verifying installed program information..."
-/Users/ttmik_engneering/Desktop/@area/one_shot/setup_list_verify.sh
+./setup_list_verify.sh
