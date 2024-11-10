@@ -21,6 +21,13 @@ This script automates the setup of a development environment on a macOS machine.
 - Visual Studio Code 설치 및 `code` 명령 설정 (Installs Visual Studio Code and sets up the `code` command)
 - Visual Studio Code용 GitHub Copilot 확장 설치 (Installs GitHub Copilot extension for Visual Studio Code)
 - Oh My Zsh 설치 (Installs Oh My Zsh)
+- Postman 설치 (Installs Postman)
+- Docker 설치 (Installs Docker)
+- Notion 설치 (Installs Notion)
+- Slack 설치 (Installs Slack)
+- RVM (Ruby Version Manager) 설치 (Installs RVM (Ruby Version Manager))
+- SDKMAN 설치 (Installs SDKMAN)
+- Xcode 최신 버전 설치 (Installs the latest version of Xcode)
 - 설치되어 있는 경우 버전 표시 (Displays version if already installed)
 
 ## 사용법 (Usage)

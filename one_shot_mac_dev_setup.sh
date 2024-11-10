@@ -19,6 +19,17 @@ else
   xcode-select --install
 fi
 
+
+# Xcode 최신 버전 설치 / Install the latest version of Xcode
+echo "Xcode 최신 버전을 설치합니다. / Installing the latest version of Xcode..."
+if ! xcodebuild -version &>/dev/null; then
+  echo "Xcode를 설치합니다. / Installing Xcode..."
+  mas install 497799835
+else
+  echo "Xcode가 이미 설치되어 있습니다. / Xcode is already installed"
+  echo "현재 Xcode 버전: $(xcodebuild -version | head -n 1) / Current Xcode version: $(xcodebuild -version | head -n 1)"
+fi
+
 # Homebrew 설치 / Install Homebrew
 if ! command -v brew &>/dev/null; then
   echo "Homebrew를 설치합니다. / Installing Homebrew..."
@@ -35,7 +46,7 @@ fi
 # Brew 업데이트 및 필수 프로그램 설치 / Update Brew and install essential programs
 echo "Homebrew 업데이트 및 필수 프로그램을 설치합니다. / Updating Homebrew and installing essential programs..."
 brew update
-brew install vim python node nvm wget htop
+brew install vim python node nvm wget htop mas
 
 # 쉘 프로필 파일 설정 / Set shell profile file
 SHELL_PROFILE="$HOME/.zshrc"
@@ -143,6 +154,15 @@ else
   brew install --cask slack
 fi
 
+# Google Chrome 설치 / Install Google Chrome
+echo "Google Chrome을 설치합니다. / Installing Google Chrome..."
+if brew list --cask google-chrome &>/dev/null; then
+  echo "Google Chrome이 이미 설치되어 있습니다. / Google Chrome is already installed"
+  echo "현재 Google Chrome 버전: $(brew info --cask google-chrome | grep 'google-chrome: ' | awk '{print $2}') / Current Google Chrome version: $(brew info --cask google-chrome | grep 'google-chrome: ' | awk '{print $2}')"
+else
+  brew install --cask google-chrome
+fi
+
 # NVM 설치 / Install NVM
 echo "NVM을 설치합니다. / Installing NVM..."
 brew install nvm
@@ -181,3 +201,6 @@ cd ..
 rm -rf d2codingfont
 
 echo "D2Coding 폰트가 설치되고 iTerm2에 설정되었습니다. / D2Coding font installed and set in iTerm2 successfully."
+
+# 관리자 권한 갱신 종료 / Stop refreshing administrator privileges
+sudo -k
