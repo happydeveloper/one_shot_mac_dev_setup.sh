@@ -13,7 +13,11 @@ chsh -s /bin/zsh
 
 # Xcode Command Line Tools 설치 / Install Xcode Command Line Tools
 echo "Xcode Command Line Tools를 설치합니다. / Installing Xcode Command Line Tools..."
-xcode-select --install
+if xcode-select -p &>/dev/null; then
+  echo "Xcode Command Line Tools가 이미 설치되어 있습니다. / Xcode Command Line Tools are already installed"
+else
+  xcode-select --install
+fi
 
 # Homebrew 설치 / Install Homebrew
 if ! command -v brew &>/dev/null; then
@@ -73,13 +77,27 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion"
 EOL
 
+# Oh My Zsh 설치 / Install Oh My Zsh
+echo "Oh My Zsh를 설치합니다. / Installing Oh My Zsh..."
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
 # iTerm2 설치 / Install iTerm2
 echo "iTerm2를 설치합니다. / Installing iTerm2..."
-brew install --cask iterm2
+if brew list --cask iterm2 &>/dev/null; then
+  echo "iTerm2가 이미 설치되어 있습니다. / iTerm2 is already installed"
+  echo "현재 iTerm2 버전: $(brew info --cask iterm2 | grep 'iterm2: ' | awk '{print $2}') / Current iTerm2 version: $(brew info --cask iterm2 | grep 'iterm2: ' | awk '{print $2}')"
+else
+  brew install --cask iterm2
+fi
 
 # Visual Studio Code 설치 / Install Visual Studio Code
 echo "Visual Studio Code를 설치합니다. / Installing Visual Studio Code..."
-brew install --cask visual-studio-code
+if brew list --cask visual-studio-code &>/dev/null; then
+  echo "Visual Studio Code가 이미 설치되어 있습니다. / Visual Studio Code is already installed"
+  echo "현재 Visual Studio Code 버전: $(brew info --cask visual-studio-code | grep 'visual-studio-code: ' | awk '{print $2}') / Current Visual Studio Code version: $(brew info --cask visual-studio-code | grep 'visual-studio-code: ' | awk '{print $2}')"
+else
+  brew install --cask visual-studio-code
+fi
 
 # 'code' 명령어 사용 설정 / Set up 'code' command for Visual Studio Code
 echo "'code' 명령어를 설정하여 터미널에서 Visual Studio Code를 바로 실행할 수 있게 합니다. / Setting up 'code' command for Visual Studio Code..."
@@ -91,5 +109,4 @@ code --install-extension GitHub.copilot
 
 # 마무리 메시지 / Completion message
 echo "설정이 완료되었습니다! 이제 터미널에서 'code .' 명령어로 Visual Studio Code를 실행할 수 있습니다. / Setup complete! You can now use 'code .' to open Visual Studio Code from the terminal."
-echo "변경 사항을 적용하려면 터미널을 재시작하거나 'source $SHELL_PROFILE'을 실행하세요. / Please restart your terminal or run 'source $SHELL_PROFILE' to apply changes."
-  
+echo "변경 사항을 사용하려면 터미널을 재시작하거나 'source $SHELL_PROFILE'을 실행하세요. / Please restart your terminal or run 'source $SHELL_PROFILE' to apply changes."

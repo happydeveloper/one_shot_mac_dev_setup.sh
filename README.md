@@ -20,6 +20,8 @@ This script automates the setup of a development environment on a macOS machine.
 - iTerm2 설치 (Installs iTerm2)
 - Visual Studio Code 설치 및 `code` 명령 설정 (Installs Visual Studio Code and sets up the `code` command)
 - Visual Studio Code용 GitHub Copilot 확장 설치 (Installs GitHub Copilot extension for Visual Studio Code)
+- Oh My Zsh 설치 (Installs Oh My Zsh)
+- 설치되어 있는 경우 버전 표시 (Displays version if already installed)
 
 ## 사용법 (Usage)
 
