@@ -107,6 +107,57 @@ ln -sf "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code" /u
 echo "GitHub Copilot 확장을 설치합니다. / Installing GitHub Copilot extension for Visual Studio Code..."
 code --install-extension GitHub.copilot
 
+# Postman 설치 / Install Postman
+echo "Postman을 설치합니다. / Installing Postman..."
+if brew list --cask postman &>/dev/null; then
+  echo "Postman이 이미 설치되어 있습니다. / Postman is already installed"
+  echo "현재 Postman 버전: $(brew info --cask postman | grep 'postman: ' | awk '{print $2}') / Current Postman version: $(brew info --cask postman | grep 'postman: ' | awk '{print $2}')"
+else
+  brew install --cask postman
+fi
+
+# Docker 설치 / Install Docker
+echo "Docker를 설치합니다. / Installing Docker..."
+if brew list --cask docker &>/dev/null; then
+  echo "Docker가 이미 설치되어 있습니다. / Docker is already installed"
+  echo "현재 Docker 버전: $(brew info --cask docker | grep 'docker: ' | awk '{print $2}') / Current Docker version: $(brew info --cask docker | grep 'docker: ' | awk '{print $2}')"
+else
+  brew install --cask docker
+fi
+
+# Notion 설치 / Install Notion
+echo "Notion을 설치합니다. / Installing Notion..."
+if brew list --cask notion &>/dev/null; then
+  echo "Notion이 이미 설치되어 있습니다. / Notion is already installed"
+  echo "현재 Notion 버전: $(brew info --cask notion | grep 'notion: ' | awk '{print $2}') / Current Notion version: $(brew info --cask notion | grep 'notion: ' | awk '{print $2}')"
+else
+  brew install --cask notion
+fi
+
+# Slack 설치 / Install Slack
+echo "Slack을 설치합니다. / Installing Slack..."
+if brew list --cask slack &>/dev/null; then
+  echo "Slack이 이미 설치되어 있습니다. / Slack is already installed"
+  echo "현재 Slack 버전: $(brew info --cask slack | grep 'slack: ' | awk '{print $2}') / Current Slack version: $(brew info --cask slack | grep 'slack: ' | awk '{print $2}')"
+else
+  brew install --cask slack
+fi
+
+# NVM 설치 / Install NVM
+echo "NVM을 설치합니다. / Installing NVM..."
+brew install nvm
+
+# RVM 설치 / Install RVM
+echo "RVM을 설치합니다. / Installing RVM..."
+\curl -sSL https://get.rvm.io | bash -s stable
+
+# SDKMAN 설치 / Install SDKMAN
+echo "SDKMAN을 설치합니다. / Installing SDKMAN..."
+curl -s "https://get.sdkman.io" | bash
+
+# SDKMAN 초기화 스크립트 추가 / Add SDKMAN initialization script
+echo 'source "/Users/ttmik_engneering/.sdkman/bin/sdkman-init.sh"' >> $SHELL_PROFILE
+
 # 마무리 메시지 / Completion message
 echo "설정이 완료되었습니다! 이제 터미널에서 'code .' 명령어로 Visual Studio Code를 실행할 수 있습니다. / Setup complete! You can now use 'code .' to open Visual Studio Code from the terminal."
 echo "변경 사항을 사용하려면 터미널을 재시작하거나 'source $SHELL_PROFILE'을 실행하세요. / Please restart your terminal or run 'source $SHELL_PROFILE' to apply changes."
@@ -128,6 +179,5 @@ sudo mv D2CodingAll/D2CodingAll/D2Coding-Ver1.3.2-20180524-all.ttc /Library/Font
 # 정리 작업 / Clean up
 cd ..
 rm -rf d2codingfont
-
 
 echo "D2Coding 폰트가 설치되고 iTerm2에 설정되었습니다. / D2Coding font installed and set in iTerm2 successfully."
