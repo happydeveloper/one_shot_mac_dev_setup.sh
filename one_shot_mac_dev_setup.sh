@@ -85,7 +85,11 @@ brew install --cask visual-studio-code
 echo "'code' 명령어를 설정하여 터미널에서 Visual Studio Code를 바로 실행할 수 있게 합니다. / Setting up 'code' command for Visual Studio Code..."
 ln -sf "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code" /usr/local/bin/code
 
+# GitHub Copilot 설치 / Install GitHub Copilot extension
+echo "GitHub Copilot 확장을 설치합니다. / Installing GitHub Copilot extension for Visual Studio Code..."
+code --install-extension GitHub.copilot
+
 # 마무리 메시지 / Completion message
 echo "설정이 완료되었습니다! 이제 터미널에서 'code .' 명령어로 Visual Studio Code를 실행할 수 있습니다. / Setup complete! You can now use 'code .' to open Visual Studio Code from the terminal."
 echo "변경 사항을 적용하려면 터미널을 재시작하거나 'source $SHELL_PROFILE'을 실행하세요. / Please restart your terminal or run 'source $SHELL_PROFILE' to apply changes."
-
+  
