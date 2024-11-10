@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/zsh
 
 # Zsh 기본 쉘로 설정
 echo "Setting Zsh as the default shell..."
