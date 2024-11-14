@@ -185,6 +185,9 @@ else
   echo "D2Coding 폰트 설치가 건너뛰어졌습니다. / D2Coding font installation skipped."
 fi
 
+
+brew install discord --appdir=~/Applications
+
 # 관리자 권한 갱신 종료 / Stop refreshing administrator privileges
 sudo -k
 
