@@ -188,6 +188,14 @@ fi
 
 brew install discord --appdir=~/Applications
 
+
+brew install --cast zoom --appdir=~/Applications
+
+# 1Password 설치 / Install 1Password
+brew install --cask 1password
+
+# 데이터베이스 관리 도구 설치 / Install database management tools
+brew install --cask datagrip
 # 관리자 권한 갱신 종료 / Stop refreshing administrator privileges
 sudo -k
 
