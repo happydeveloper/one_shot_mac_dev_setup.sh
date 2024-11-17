@@ -73,18 +73,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion"
 EOL
 
-# Oh My Zsh 설치 / Install Oh My Zsh
-echo "Oh My Zsh를 설치합니다. / Installing Oh My Zsh..."
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# Oh My Zsh 설치 스크립트 실행 / Execute Oh My Zsh installation script
+./install_oh_my_zsh.sh
 
-# iTerm2 설치 / Install iTerm2
-echo "iTerm2를 설치합니다. / Installing iTerm2..."
-if brew list --cask iterm2 &>/dev/null; then
-  echo "iTerm2가 이미 설치되어 있습니다. / iTerm2 is already installed"
-  echo "현재 iTerm2 버전: $(brew info --cask iterm2 | grep 'iterm2: ' | awk '{print $2}') / Current iTerm2 version: $(brew info --cask iterm2 | grep 'iterm2: ' | awk '{print $2}')"
-else
-  brew install --cask iterm2
-fi
+# iTerm2 설치 스크립트 실행 / Execute iTerm2 installation script
+./install_iterm2.sh
 
 # Visual Studio Code 설치 스크립트 실행 / Execute Visual Studio Code installation script
 ./install_vscode.sh

@@ -17,3 +17,6 @@ ln -sf "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code" /u
 # GitHub Copilot 설치 / Install GitHub Copilot extension
 echo "GitHub Copilot 확장을 설치합니다. / Installing GitHub Copilot extension for Visual Studio Code..."
 code --install-extension GitHub.copilot
+
+# openapi 설치 / Install openapi extension
+# code --install-extension openai-chatgpt
